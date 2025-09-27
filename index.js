@@ -29,7 +29,7 @@ const ejsmate = require('ejs-mate');
 app.engine('ejs', ejsmate);
 const dburl=process.env.ATLASDB_URL;
 // utilities
-const Expresserror=require("./utilits/Expresserror");
+const Expresserror=require("./utilits/expresserror");
 //database connection
 async function main() {
     // mongoose.connect(dburl);
