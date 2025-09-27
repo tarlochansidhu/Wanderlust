@@ -1,7 +1,7 @@
 const express=require("express");
 const router=express.Router({mergeParams:true});
 const wrapAsync=require("../utilits/wrapasync.js");
-const Expresserror=require("../utilits/Expresserror");
+const Expresserror=require("../utilits/expresserror");
 const Listing=require("../models/listing.js");
 const Review=require("../models/reviews.js");
 const {reviewschema}=require("../schema.js");
