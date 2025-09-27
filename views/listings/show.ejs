@@ -1,0 +1,105 @@
+<% layout('layouts/boilerplate') -%>
+<body>
+   <div class="showcard">
+      <h1><%= listing.title %></h1>
+      
+     <div id="listingCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <% listing.images.forEach((img, index) => { %>
+      <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+        <img src="<%= img.url %>" class="d-block w-100" alt="Listing image">
+      </div>
+    <% }) %>
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#listingCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#listingCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+   <h3>Host- <b><%=  listing.owner.username  %></b></h3>
+   <h6><%= listing.description %></h6>
+   <h6>&#8377;<%= listing.price %></h6>
+   <h6><%= listing.location %></h6>
+   <h6><%= listing.country %></h6>
+   
+   <div class="showbtns">
+     <% if(currentuser && currentuser._id.equals(listing.owner._id)){ %> 
+         <form action="/listings/<%= listing._id %>/edit">
+    <button type="submit" class="showedit">Edit</button>
+   </form>
+   <form method="POST" action="/listings/deleting/<%= listing._id %>?_method=DELETE">
+    <button type="submit" class="delete">Delete</button>
+   </form>
+   <% } %>
+  <% if(!currentuser) {%>
+   <form method="get" action="/login">
+      <button type="submit" class="btn btn-outline-danger">Review</button>
+   </form>
+   <% } %>
+   </div>
+   </div>
+   <hr class="hr">
+      <% if(currentuser){ %>
+   <div class="reviewform">
+   
+   <h6>Leave your review</h6>
+           <form action="/listings/<%= listing._id %>/review" method="post" novalidate class="needs-validation">
+             <fieldset class="starability-slot">bn      
+  <legend>Ratings:</legend>
+  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+  <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+  <label for="first-rate1" title="Terrible">1 star</label>
+  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+  <label for="first-rate2" title="Not good">2 stars</label>
+  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+  <label for="first-rate3" title="Average">3 stars</label>
+  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+  <label for="first-rate4" title="Very good">4 stars</label>
+  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+  <label for="first-rate5" title="Amazing">5 stars</label>
+</fieldset>
+
+            <div class="form-floating reviewcomments">
+             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="review[comment]" required></textarea>
+             <label for="floatingTextarea2">Comments</label>
+            </div>
+           
+             <button type="submit" class="btn btn-outline-danger mt-4">Submit</button>
+           </form>
+          
+
+   </div>
+   <% } %>
+   <div class="showreviews">
+      <% for (let review of listing.reviews) {%>
+         <div class="reviews">
+            <h4> <%= review.author.username %> </h4>
+            
+            <p class="starability-result" data-rating="<%= review.rating %>">
+               Rated: 3 stars
+  </p>
+               
+            <%= review.comment %>
+            
+           
+    
+            <% if(currentuser && currentuser._id.equals(review.author._id)) {%>
+            <form action="/listings/<%= listing._id %>/review/<%= review._id %>?_method=DELETE" method="post">
+             
+<button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form>
+            <% } %>
+         </div>
+         
+     <%  } %>
+   </div>
+  
+   
+</body>

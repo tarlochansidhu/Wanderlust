@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate') -%>
+<body>
+   <div class="createform">
+    <h1 class="createheading">Create a New Listing</h1>
+     <form method="post" action="/listings/create"  novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="tittle">
+            <label for="title">Title</label>
+        <input type="text" name="listing[title]" placeholder="Add a catchy title" id="title" class="form-control" required>
+         <div class="valid-feedback">
+      Looks good!
+    </div>
+      <div class="invalid-feedback">
+      Enter a Perfect Title
+    </div>
+        </div>
+        <div class="description">
+        <label for="description">Description</label>
+        <textarea name="listing[description]" id="description" class="form-control"  required></textarea>
+         <div class="valid-feedback">
+      Looks good!
+    </div>
+      <div class="invalid-feedback">
+      Enter a Description!
+    </div>
+       </div>
+        <div class="formimage">
+        <label for="image">Image</label>
+        <!-- <input type="text" name="listing[image]" placeholder="enter image URL/Link" class="form-control" id="image" required> -->
+         <input type="file" placeholder="Upload file" id="image" class="form-control"  name="listing[images]" multiple >
+         <div class="invalid-feedback">
+      Please Provide a Image
+    </div>
+       </div>
+       <div class="createdesign">
+        <div class="formprice">
+        <label for="price">   Price</label>
+        <input type="text" name="listing[price]" id="price" placeholder="1200" class="form-control"  required>
+         <div class="invalid-feedback">
+      Enter a Price 
+    </div>
+        </div>
+       <div class="formlocation">
+        <label for="location">Location</label>
+        <input type="text" name="listing[location]" id="location" placeholder="Goa" class="form-control"  required>
+         <div class="invalid-feedback">
+       Enter city!
+    </div>
+       </div>
+       </div>
+       <div class="formcategory">
+         <label for="category">Category</label>
+<select id="category" name="listing[category]" class="form-control" required>
+  <option value="">-- Select a category --</option>
+  <option value="cabin">Cabin</option>
+  <option value="treehouse">Treehouse</option>
+  <option value="beachhouse">Beach House</option>
+  <option value="flat">Flat</option>
+  <option value="tinyhouse">Tiny House</option>
+  <option value="farmhouse">Farmhouse</option>
+</select>
+       </div>
+       <div class="formcountry">
+        <label for="country">Country</label>
+        <input type="text" name="listing[country]" id="country" class="form-control"  placeholder="India" required>
+         <div class="invalid-feedback">
+      Please provide a valid country.
+    </div>
+         </div>
+          <button type="submit" class="createadd">Add</button>
+    </form>
+   </div>
+    
+</body>

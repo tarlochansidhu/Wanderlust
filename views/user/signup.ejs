@@ -1,0 +1,18 @@
+<% layout('layouts/boilerplate') -%> 
+
+
+
+
+<div class="signupform createform">
+    <h2 class="cre">Signup with Wanderlust</h2>
+    <form action="/signup" method="post">
+      
+            <label for="username">Username</label>
+        <input type="text" name="user[username]" placeholder="Add a username" id="username" class="form-control" required>
+         <label for="email">Email</label>
+        <input type="email" name="user[email]" placeholder="Email" id="email" class="form-control" required>
+         <label for="username">Password</label>
+        <input type="password" name="user[password]" placeholder="password" id="password" class="form-control" required>
+       <button type="submit" class="btn btn-success">Signup</button>
+    </form>
+</div>

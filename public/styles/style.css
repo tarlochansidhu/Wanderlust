@@ -1,0 +1,95 @@
+body{
+    display: flex;
+    flex-direction: column;
+    
+    height: 100%;
+   
+}
+.container{
+    flex: 1;
+    min-height: 100vh;
+ overflow: auto;
+}
+.navbar{
+    background-color: white;
+   
+}
+.navicon{
+    color: red;
+}
+.listings{
+    display: grid; /* enables grid layout */
+  grid-template-columns: repeat(3, 1fr);
+ 
+}
+.listings a{
+  text-decoration: none;
+}
+.sort a{
+    text-decoration: none !important;
+     color: inherit !important;
+}
+.listing{
+     margin-right: 20px;
+    height: 380px;
+    width: 400px;
+}
+.listing img{
+    /* border-top-left-radius: 20px;
+  border-top-right-radius: 20px; */
+  border-radius: 20px;
+  height: 300px;
+  width: 400px;
+}
+.listingbody {
+    
+    color: rgb(0, 0, 0);
+}
+@media (max-width:1250px) {
+    .listings{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width:750px) {
+    .listing{
+        width: 350px;
+        margin-left: auto;
+       margin-right: auto;
+
+    }
+    .listings{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+@media (max-width:550px) {
+    .listing{
+        width: 300px;
+       margin-left: auto;
+       margin-right: auto;
+    }
+    .listing img{
+      width: 300px;
+    }
+    .listings{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+.footer{
+    background-color: rgb(183, 180, 180);
+    color: black;
+   text-align: center;
+    align-items: center;
+    justify-content: center;
+   
+}
+.companytag{
+    margin-top: 10px;
+    margin-bottom: auto;
+}
+.socials i{
+  margin-left: 5px;
+  margin-right: 5px;
+}

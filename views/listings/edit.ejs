@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') -%>
+<body>
+    <div class="createform">
+        <h1>Edit Your Listing</h1>
+    <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <label for="title">Title</label>
+        <input type="text" name="listing[title]" value="<%= listing.title %>" id="title" class="form-control" required>
+        <div class="description">
+        <label for="description">description</label>
+        <textarea name="listing[description]"   id="description" class="form-control" required><%= listing.description %></textarea>
+        </div>
+        <label for="">Original Images</label>
+        
+       <% for(let image of listing.images){%>
+        <img src="<%= image.url %>" style="height: 200px; width: 200px; margin-top: 10px;" alt="">
+        <% } %>
+        <div class="formimage">
+        <label for="image">Add New Images</label>
+        <!-- <input type="text" name="listing[image]" placeholder="enter image URL/Link" class="form-control" id="image" required> -->
+         <input type="file" placeholder="Upload file" id="image" class="form-control"  name="listing[images]" Multiple>
+         
+       </div>
+        <div class="createdesign">
+        <div class="formprice">
+            <label for="price">Price</label>
+        <input type="text" value="<%= listing.price %>" name="listing[price]" id="price" class="form-control" required>
+        </div>
+        
+        <div class="formlocation">
+            <label for="location">Location</label>
+        <input type="text" name="listing[location]" value="<%=listing.location%>" id="location" class="form-control" required>
+        </div>
+        </div>
+         <div class="formcategory">
+     <label for="category">Category</label>
+<select id="category" name="listing[category]" class="form-control" value="" >
+  <option value=""><%= listing.category %></option>
+  <option value="cabin"  <%= listing.category === 'cabin' ? 'selected' : '' %>>Cabin</option>
+  <option value="treehouse"  <%= listing.category === 'treehouse' ? 'selected' : '' %>>Treehouse</option>
+  <option value="beachhouse"  <%= listing.category === 'beachhouse' ? 'selected' : '' %>>Beach House</option>
+  <option value="flat"  <%= listing.category === 'flat' ? 'selected' : '' %>>Flat</option>
+  <option value="tinyhouse"  <%= listing.category === 'tinyhouse' ? 'selected' : '' %>>Tiny House</option>
+  <option value="farmhouse"  <%= listing.category === 'farmhouse' ? 'selected' : '' %>>Farmhouse</option>
+</select>
+
+       </div>
+        <label for="country">country</label>
+        
+        <input type="text" name="listing[country]" value="<%= listing.country %>" id="country" class="form-control" required>
+         <button type="submit" class="createadd">Edit</button>
+    </form>
+    </div>
+</body>

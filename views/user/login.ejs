@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') -%> 
+
+
+
+
+<div class="loginform createform">
+    <h2 class="">Login with Wanderlust</h2>
+    <form action="/login" method="post" novalidate class="needs-validation">
+      
+            <label for="username">Username</label>
+        <input type="text" name="username" placeholder="Add a username" id="username" class="form-control" required>
+         
+         <label for="username">Password</label>
+        <input type="password" name="password" placeholder="password" id="password" class="form-control" required>
+       <button type="submit" class="btn btn-outline-danger">Login</button>
+    </form>
+</div>
